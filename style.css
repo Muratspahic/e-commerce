@@ -1,0 +1,173 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    margin: auto;
+    max-width: 90vw;
+    text-align: center;
+    padding-top: 10px;
+}
+
+svg {
+    width: 30px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.icon-cart {
+    position: relative;
+    cursor: pointer;
+}
+
+.icon-cart span {
+    position: absolute;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    top: 50%;
+    right: -20px;
+}
+
+.title {
+    font-size: xx-large;
+}
+
+.listProduct {
+    display: flex;
+    gap: 20px;
+}
+
+.listProduct .item {
+    background-color: #EEEEE6;
+    padding: 20px;
+    border-radius: 20px;
+    flex: 1 1 calc(25% - 20px);
+}
+
+.listProduct .item h2 {
+    font-weight: 500;
+    font-size: large;
+}
+
+.listProduct .item button {
+    background-color: #353432;
+    color: #eee;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* cart */
+.cartTab {
+    width: 470px;
+    background-color: #353432;
+    color: #eee;
+    position: fixed;
+    top: 0;
+    right: -600px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.showCart .cartTab {
+    right: 0;
+}
+
+
+body.showCart .listProduct,
+body.showCart header {
+    flex: 0 0 auto;
+    max-width: 50%;
+}
+
+.cartTab h1 {
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.cartTab .btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartTab button {
+    background-color: #E8BC0E;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    width: 100%;
+}
+
+.cartTab .close {
+    background-color: #eee;
+}
+
+.startTab {
+    display: flex;
+    flex-direction: column;
+}
+
+.listCart .item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    top: 80px;
+}
+
+img {
+    height: 80px;
+}
+
+.listCart {
+    position: absolute;
+    width: 100%;
+}
+
+.listCart .quantity {
+    display: flex;
+    align-items: center;
+}
+
+.listCart .quantity span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+    text-align: center;
+}
+
+.listCart .quantity span:nth-child(2) {
+    background-color: transparent;
+    color: #eee;
+    cursor: auto;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .listProduct {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+}
