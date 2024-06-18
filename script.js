@@ -79,7 +79,10 @@ const addToCart = (product_id) => {
 
 const addCartToHTML = () => {
     listCartHTML.innerHTML = "";
-    if(listCart.length > 0){
+    let totalQuantity = 0;
+    let totalPrice = 0;
+
+    if (listCart.length > 0) {
         listCart.forEach(cart => {
             let product = listProducts.find(product => product.id == cart.product_id);
             let newCart = document.createElement("div");
@@ -101,10 +104,38 @@ const addCartToHTML = () => {
             `;
             newCart.dataset.id = product.id;
             listCartHTML.appendChild(newCart);
-        });
-    }
-};
 
+            totalQuantity += cart.quantity;
+            totalPrice += product.price * cart.quantity;
+        });
+
+
+        const btnSection = document.querySelector('.cartTab .btn');
+        let totalPriceDisplay = btnSection.querySelector('.totalPriceDisplay');
+        if (!totalPriceDisplay) {
+            totalPriceDisplay = document.createElement('div');
+            totalPriceDisplay.classList.add('totalPriceDisplay');
+            btnSection.insertBefore(totalPriceDisplay, btnSection.firstChild.nextSibling);
+        }
+        totalPriceDisplay.innerHTML = `Ukupna cijena: $${totalPrice}`;
+
+    } else {
+        const totalPriceDisplay = document.querySelector('.cartTab .totalPriceDisplay');
+        if (totalPriceDisplay) {
+            totalPriceDisplay.remove();
+        }
+    }
+    iconCartSpan.innerText = totalQuantity;
+
+
+    const removeButtons = document.querySelectorAll('.removeCart');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            addCartToHTML();
+        });
+    });
+};
+addCartToHTML();
 
 const initApp = () => {
     fetch("products.json")
